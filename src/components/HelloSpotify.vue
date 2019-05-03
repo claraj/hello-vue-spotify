@@ -1,30 +1,31 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>Hello Spotify</h1>
 
+    <button @click="spotifyLogin">Log in to Spotify</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloSpotify',
-  props: {
-    msg: String
+  data() {
+    return {}
   }, 
-  mounted() {
+  methods: {
+    spotifyLogin() {
+    let client_id = 'YOUR CLIENT ID HERE'  // TODO set this 
 
+    let redirect_uri = encodeURIComponent('http://127.0.0.1:8082/auth')
 
-  let client_id = '29639456d37c456e94cab1d8c924828d'
-  let redirect_uri = encodeURIComponent('http://127.0.0.1:8082/auth')
+    var url = 'https://accounts.spotify.com/authorize?'
+    url += `client_id=${client_id}`
+    url += '&response_type=token' 
+    url += `&redirect_uri=${redirect_uri}`
+    url += '&scope=playlist-read-private%20playlist-modify-public%20playlist-modify-private'
 
-  var url = 'https://accounts.spotify.com/authorize?'
-  url += `client_id=${client_id}`
-  url += '&response_type=token' 
-  url += `&redirect_uri=${redirect_uri}`
-  url += '&scope=playlist-read-private%20playlist-modify-public%20playlist-modify-private'
-
-  window.location.href = url   // redirect to Spotify auth URL
-
+    window.location.href = url   // redirect to Spotify auth URL
+    }
   }
 }
 </script>
