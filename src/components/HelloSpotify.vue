@@ -16,7 +16,7 @@ export default {
     spotifyLogin() {
     let client_id = 'YOUR CLIENT ID HERE'  // TODO set this 
 
-    let redirect_uri = encodeURIComponent('http://127.0.0.1:8082/auth')
+    let redirect_uri = encodeURIComponent('http://127.0.0.1:8080/auth')
 
     var url = 'https://accounts.spotify.com/authorize?'
     url += `client_id=${client_id}`
